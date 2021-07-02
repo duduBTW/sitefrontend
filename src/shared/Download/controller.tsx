@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 export interface DownloadModel {
   fileName: string;
@@ -39,7 +39,8 @@ const useDownloadProvider = () => {
   };
 
   const startWait = (fileName: string) => {
-    const id = uuidv4();
+    // const id = uuidv4();
+    const id = "";
     setFiles((oldFiles) => [...oldFiles, { id, type: "starting", fileName }]);
 
     return id;
