@@ -67,6 +67,66 @@ export const useTakaTagsSearchProvider = () => {
   };
 };
 
+export const useTakaContratoSearchProvider = () => {
+  const [content, setContent] = useState<any[] | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const search = (data: any) => {
+    setLoading(true);
+
+    instance
+      .get("/api/taka/contract", {
+        params: data,
+      })
+      .then(function (response) {
+        setLoading(false);
+
+        setContent(response.data);
+      })
+      .catch(function (error) {
+        setLoading(false);
+
+        console.log(error.response);
+      });
+  };
+
+  return {
+    content,
+    loading,
+    search,
+  };
+};
+
+export const useTakaUserSearchProvider = () => {
+  const [content, setContent] = useState<any[] | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const search = (data: any) => {
+    setLoading(true);
+
+    instance
+      .get("/api/taka/user", {
+        params: data,
+      })
+      .then(function (response) {
+        setLoading(false);
+
+        setContent(response.data);
+      })
+      .catch(function (error) {
+        setLoading(false);
+
+        console.log(error.response);
+      });
+  };
+
+  return {
+    content,
+    loading,
+    search,
+  };
+};
+
 export const useTakaTag = (
   backPath: string = "",
   name: string,
@@ -98,3 +158,9 @@ export const useTakaArt = (
     backPath,
     idsubart
   );
+
+export const useTakaContrato = (
+  backPath: string = "",
+  name: string,
+  idContrato: string = "0"
+) => useCrud<any>(`/api/taka/contract`, name, backPath, idContrato);

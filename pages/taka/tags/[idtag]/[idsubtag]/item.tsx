@@ -3,7 +3,7 @@ import TabsSite from "@/shared/TabsProsesmt";
 import React from "react";
 import TakaTagDados from "@/src/taka/TakaTagDados";
 import TakaSubTags, { TakaSubTagDados } from "@/src/taka/TakaSubTags";
-import TakaArts from "@/src/taka/TakaArts";
+import TakaArts, { TakaArtsPicList } from "@/src/taka/TakaArts";
 
 export async function getServerSideProps(ctx) {
   const { idtag, idsubtag } = ctx.params;
@@ -36,7 +36,7 @@ export default function TakaArtPage({
             idtag={idtag}
             type="edit"
           />,
-          <TakaArts key="2" />,
+          <TakaArtsPicList key="2" />,
         ]}
         tabs={["Dados", "Art"]}
       />

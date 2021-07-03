@@ -1,24 +1,24 @@
 import NewButton from "@/shared/Button/NewButton";
 import HeaderWithBack from "@/shared/Item/HeaderWithBack";
 import Search from "@/shared/Search";
-import { ITakaTag, useTakaTagsSearchProvider } from "@/src/taka/controller";
+import { useTakaContratoSearchProvider } from "@/src/taka/controller";
 import { useRouter } from "next/router";
 import React from "react";
 
 export default function TakaTagPage() {
   const history = useRouter();
-  const searchProps = useTakaTagsSearchProvider();
+  const searchProps = useTakaContratoSearchProvider();
 
-  const redirectNew = () => history.push("/taka/tags/novo");
+  const redirectNew = () => history.push("/taka/contrato/item/novo");
 
-  const redirectEdit = ({ _id: id }: ITakaTag) =>
-    history.push(`/taka/tags/${id}`);
+  const redirectEdit = ({ _id: id }: any) =>
+    history.push(`/taka/contrato/item/${id}`);
 
   return (
     <Search
       {...searchProps}
-      title={<HeaderWithBack title="Tags" linkBack="/taka" />}
-      fieldsContent={[{ label: "Titulo", content: "titulo" }]}
+      title={<HeaderWithBack title="Contratos" linkBack="/taka" />}
+      fieldsContent={[{ label: "Data de criação", content: "dateCreated" }]}
       extraButtons={<NewButton openNew={redirectNew} />}
       crudProps={{
         edit: true,
@@ -30,7 +30,7 @@ export default function TakaTagPage() {
             {
               lg: 12,
               name: "titulo",
-              label: "Titulo",
+              label: "Criado",
               variant: "standard",
             },
           ],

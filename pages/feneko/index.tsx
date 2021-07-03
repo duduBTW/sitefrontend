@@ -35,7 +35,7 @@ export default function Feneko() {
   );
 }
 
-function CardItem({ title, icon, url }) {
+export function CardItem({ title, icon, url }) {
   const history = useRouter();
 
   return (
