@@ -1,6 +1,5 @@
 import {
   Checkbox,
-  FormControl,
   FormControlLabel,
   FormLabel,
   List,
@@ -29,10 +28,10 @@ export default function SwitchDef({
         <Controller
           render={({ value, onChange }) => (
             <Switch
-              checked={value === true || value == 1}
+              checked={value}
               onChange={(e) => {
                 onChangeItem(e.target.checked);
-                onChange(e.target.checked ? 1 : 0);
+                onChange(e.target.checked);
               }}
             />
           )}

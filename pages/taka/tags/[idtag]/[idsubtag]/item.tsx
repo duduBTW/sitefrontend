@@ -1,9 +1,8 @@
 import HeaderWithBack from "@/shared/Item/HeaderWithBack";
 import TabsSite from "@/shared/TabsProsesmt";
+import { TakaArtsPicList } from "@/src/taka/TakaArts";
+import { TakaSubTagDados } from "@/src/taka/TakaSubTags";
 import React from "react";
-import TakaTagDados from "@/src/taka/TakaTagDados";
-import TakaSubTags, { TakaSubTagDados } from "@/src/taka/TakaSubTags";
-import TakaArts, { TakaArtsPicList } from "@/src/taka/TakaArts";
 
 export async function getServerSideProps(ctx) {
   const { idtag, idsubtag } = ctx.params;

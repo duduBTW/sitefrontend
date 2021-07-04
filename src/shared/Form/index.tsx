@@ -19,11 +19,7 @@ const convertArrayToObject = (array: SchemaSection[], key: any) => {
         ...content,
         ...obj,
         [item[key]]:
-          item.type === "checkbox"
-            ? item.customDefValue || "0"
-            : item.customDefValue || item.forceDef
-            ? item.customDefValue
-            : "",
+          item.customDefValue || item.forceDef ? item.customDefValue : "",
       };
     }, initialValue)
   );
@@ -56,9 +52,10 @@ function Form<T = any>({
   setDefValues?: (methods: UseFormMethods<any>) => void;
   methodsOutSide?: UseFormMethods<any>;
 }) {
-  const resolver = validationSchema
-    ? useYupValidationResolver(validationSchema)
-    : null;
+  const resolver = null;
+  // const resolver = validationSchema
+  //   ? useYupValidationResolver(validationSchema)
+  //   : null;
 
   defaultValues = { ...convertArrayToObject(schema, "name"), ...defaultValues };
 

@@ -21,6 +21,7 @@ export interface ITakaSubTag {
   _id: string;
   titulo: string;
   descricao: string;
+  open: boolean | number | string;
 }
 
 /**
@@ -143,7 +144,10 @@ export const useTakaSubTag = (
     `/api/taka/tags/subtags/${idtag}`,
     name,
     backPath,
-    idsubtag
+    idsubtag,
+    {
+      revalidateOnEdit: true,
+    }
   );
 
 export const useTakaArt = (

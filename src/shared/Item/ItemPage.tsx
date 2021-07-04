@@ -91,6 +91,7 @@ export default function ItemPage<T>({
         data,
         content
       );
+
       if (hasChanged) {
         edit(updtedValue);
       } else {

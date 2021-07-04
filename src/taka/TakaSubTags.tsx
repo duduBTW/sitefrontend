@@ -66,6 +66,12 @@ export function TakaSubTagDados({
             content: [
               {
                 lg: 12,
+                label: "Aberto",
+                name: "open",
+                type: "checkbox",
+              },
+              {
+                lg: 12,
                 label: "Nome",
                 name: "titulo",
                 rules: { required: "Preencha esse campo ヽ(*｀ﾟД´)ﾉ" },
