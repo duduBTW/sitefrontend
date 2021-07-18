@@ -33,7 +33,24 @@ export default function TakaContrato() {
                     error={error}
                     control={control}
                     name={name}
-                    label="Contrato"
+                    label="Contrato Português"
+                  />
+                ),
+              },
+              {
+                type: "custom",
+                name: "termEn",
+                // eslint-disable-next-line react/display-name
+                customComponent: ({ control, error, name }) => (
+                  <ModeloDef
+                    config={{
+                      shouldNotGroupWhenFull: true,
+                    }}
+                    rules={{}}
+                    error={error}
+                    control={control}
+                    name={name}
+                    label="Contrato Ingles"
                   />
                 ),
               },

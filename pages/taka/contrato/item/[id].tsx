@@ -1,6 +1,6 @@
 import HeaderWithBack from "@/shared/Item/HeaderWithBack";
 import { useTakaContrato } from "@/src/taka/controller";
-import { CircularProgress, Divider } from "@material-ui/core";
+import { CircularProgress, Divider, Typography } from "@material-ui/core";
 import React from "react";
 
 export async function getServerSideProps(ctx) {
@@ -27,9 +27,23 @@ export default function TakaContrato({ id }) {
         title={`${title}: ${crudProps?.content.dateCreated}`}
       />
       <Divider />
+      <br />
+      <Typography variant="h3">Termo Português</Typography>
+      <br />
       <div
         dangerouslySetInnerHTML={{
           __html: crudProps.content.term,
+        }}
+      />
+      <br />
+      <Divider />
+      <br />
+      <br />
+      <Typography variant="h3">Termo Ingles</Typography>
+      <br />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: crudProps.content.termEn,
         }}
       />
     </div>
