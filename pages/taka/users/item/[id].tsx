@@ -28,6 +28,13 @@ export default function TakaUser({ user }) {
         schema={[
           [
             {
+              content: "nickname",
+              label: "Nick",
+              size: 12,
+            },
+          ],
+          [
+            {
               content: "name",
               label: "Nome",
               size: 6,
