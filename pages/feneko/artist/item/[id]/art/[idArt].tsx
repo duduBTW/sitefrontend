@@ -1,10 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react/display-name */
 import { ItemPage } from "@/shared/index";
 import { useFenekoArt } from "@/src/feneko/controller";
-import { Box, Typography } from "@material-ui/core";
+import { Box, Divider, Typography } from "@material-ui/core";
 
 import ImageIcon from "@material-ui/icons/Image";
 import AspectRatioIcon from "@material-ui/icons/AspectRatio";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export async function getServerSideProps(ctx) {
   const { id, idArt } = ctx.params;
@@ -27,6 +29,11 @@ export default function ArtistaArteItemPage({
   const title = "Feneko Arte";
 
   const crudProps = useFenekoArt(linkBack, title, idArt, id);
+  const [image, setImage] = useState("");
+
+  useEffect(() => {
+    setImage(crudProps.content?.miniature);
+  }, [crudProps.content]);
 
   // Tipo
   const type = idArt !== "0" ? "edit" : "create";
@@ -51,13 +58,39 @@ export default function ArtistaArteItemPage({
               },
               {
                 lg: 12,
+                label: "Miniatura",
+                name: "miniature",
+                onChange: (e) => setImage(e.target.value),
+                inputPropsAdittional: {
+                  type: "url",
+                },
+              },
+              {
+                lg: 12,
+                type: "custom",
+                customComponent: () =>
+                  image ? (
+                    <>
+                      <img
+                        style={{ maxWidth: 250, width: "100%" }}
+                        src={image}
+                      />
+                      <br />
+                      <br />
+                      <Divider />
+                    </>
+                  ) : (
+                    <div></div>
+                  ),
+              },
+              {
+                lg: 12,
                 label: "Url",
                 name: "url",
                 inputPropsAdittional: {
                   type: "url",
                 },
               },
-
               {
                 lg: 12,
                 label: "Tipo",
@@ -71,6 +104,10 @@ export default function ArtistaArteItemPage({
                   {
                     value: "image",
                     label: "Imagem",
+                  },
+                  {
+                    value: "iframe",
+                    label: "Iframe",
                   },
                 ],
               },

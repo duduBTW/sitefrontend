@@ -19,7 +19,7 @@ export default function FenekoArtList({ id }: { id: string }) {
         />
       </Box>
       <ListFotos
-        imgProp="url"
+        imgProp="miniature"
         titleProp="title"
         onEdit={(item) =>
           history.push(`/feneko/artist/item/${id}/art/${item._id}`)

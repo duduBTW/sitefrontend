@@ -70,7 +70,8 @@ export interface IFenekoTipoPedido {
  * @param ratio:string
  */
 export interface IFenekoArte {
-  type: "video" | "image";
+  type: "video" | "image" | "iframe";
+  miniature: string;
   url: string;
   title: string;
   ratio?: string;
