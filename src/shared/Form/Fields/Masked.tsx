@@ -1,69 +1,71 @@
-// import React, { useEffect } from "react";
-// import { Control, Controller, UseFormMethods } from "react-hook-form";
-// import NumberFormat, {
-//   FormatInputValueFunction,
-//   NumberFormatValues,
-// } from "react-number-format";
-// import TextField from "@material-ui/core/TextField";
+import { useEffect } from "react";
+import { Control, Controller, UseFormMethods } from "react-hook-form";
+import NumberFormat, {
+  FormatInputValueFunction,
+  NumberFormatValues,
+} from "react-number-format";
+import TextField from "@material-ui/core/TextField";
 
-// export function Currency({
-//   control,
-//   name,
-//   label,
-//   rules,
-//   error,
-//   onChangeItem,
-//   isAllowed,
-//   valueOut,
-//   setValue,
-// }: {
-//   control?: Control<Record<string, any>>;
-//   name: string;
-//   label: string;
-//   rules: any;
-//   error: any;
-//   onChangeItem?: (values: NumberFormatValues) => void;
-//   isAllowed?: (values: NumberFormatValues) => boolean;
-//   valueOut?: number;
-//   setValue?: UseFormMethods["setValue"];
-// }) {
-//   useEffect(() => {
-//     if (valueOut && setValue) {
-//       setValue(name, valueOut, {
-//         shouldValidate: true,
-//       });
-//     }
-//   }, [valueOut]);
+export function Currency({
+  control,
+  name,
+  label,
+  rules,
+  error,
+  onChangeItem,
+  isAllowed,
+  valueOut,
+  setValue,
+  prefix = "R$ ",
+}: {
+  control?: Control<Record<string, any>>;
+  name: string;
+  label: string;
+  rules: any;
+  error: any;
+  onChangeItem?: (values: NumberFormatValues) => void;
+  isAllowed?: (values: NumberFormatValues) => boolean;
+  valueOut?: number;
+  setValue?: UseFormMethods["setValue"];
+  prefix?: string;
+}) {
+  useEffect(() => {
+    if (valueOut && setValue) {
+      setValue(name, valueOut, {
+        shouldValidate: true,
+      });
+    }
+  }, [valueOut]);
 
-//   return (
-//     <Controller
-//       render={({ onChange, value }) => (
-//         <NumberFormat
-//           id={name}
-//           style={{ width: "100%" }}
-//           customInput={TextField}
-//           label={label}
-//           prefix={"R$ "}
-//           variant="outlined"
-//           decimalSeparator=","
-//           thousandSeparator="."
-//           error={error}
-//           value={value}
-//           isAllowed={isAllowed}
-//           helperText={error && <span>{error.message}</span>}
-//           onValueChange={(v) => {
-//             //value without dollar signe
-//             if (onChangeItem) onChangeItem(v);
-//             onChange(v.floatValue);
-//           }}
-//         />
-//       )}
-//       rules={rules}
-//       name={name}
-//       control={control}
-//     />
-//   );
-// }
+  return (
+    <Controller
+      render={({ onChange, value }) => (
+        <NumberFormat
+          id={name}
+          style={{ width: "100%" }}
+          customInput={TextField}
+          label={label}
+          prefix={prefix}
+          variant="outlined"
+          decimalSeparator=","
+          thousandSeparator="."
+          error={error}
+          value={value}
+          isAllowed={isAllowed}
+          helperText={error && <span>{error.message}</span>}
+          onValueChange={(v) => {
+            //value without dollar signe
+            if (onChangeItem) onChangeItem(v);
+            onChange(v.floatValue);
+          }}
+        />
+      )}
+      rules={rules}
+      name={name}
+      control={control}
+    />
+  );
+}
 
 // export function Porcentagem({
 //   control,
@@ -171,8 +173,3 @@
 //     />
 //   );
 // }
-import React from "react";
-
-export default function Masked() {
-  return <div></div>;
-}

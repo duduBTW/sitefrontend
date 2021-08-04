@@ -44,6 +44,18 @@ export interface IFenekoTag {
   tituloEn: string;
 }
 
+export type IFenekoPrecoApi = {
+  inicio: number;
+  fim: number;
+  imagem: string;
+};
+
+export type IFenekoPrecoFront = {
+  [k: string]: {
+    imagem: string;
+  };
+};
+export type IFenekoPreco = IFenekoPrecoApi[] | IFenekoPrecoFront[];
 /**
  * Interface to model the Feneko Tag for TypeScript.
  * @param rag:ref => IFenekoTag._id
@@ -61,6 +73,15 @@ export interface IFenekoTipoPedido {
   descPt: string;
   descEn: string;
   image: string;
+
+  menEn: string;
+  maxEn: string;
+  menPt: string;
+  maxPt: string;
+  showPrice: boolean;
+
+  preco: IFenekoPreco;
+  value: number[];
 }
 
 /**
